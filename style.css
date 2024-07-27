@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    user-select: none;
+}
+.mainContainer {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+}
+
+.subContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.floorLiftContainer {
+    height: 90vh;
+    width: 250px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.floors {
+    border: 3px solid black;
+    height: 25%;
+    width: 100%;
+}
+
+.liftContainer {
+    position: absolute;
+    width: 60%;
+    height: 25%;
+    top: 75%;
+    border: 5px solid blue;
+    transition: 1s all linear;
+}
+
+
+.lift {}
+
+.dailContainer{
+}
+
+.dailBtn{
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 6px double black;
+    font-size: 30px;
+    font-weight: 600;
+    transition: 0.2s all;
+    margin: 10px;
+}
+.dailBtn:hover{
+    color: rgba(246, 36, 36, 0.604);
+    border-color: rgba(246, 36, 36, 0.58);
+}
+
+.selectedBtn{
+    color: red !important;
+    border-color: red !important;
+    cursor: not-allowed;
+}
