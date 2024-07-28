@@ -50,14 +50,26 @@ function setInLine() {
         setTimeout(() => {
             isLiftMoving = false;
             setInLine();
-        }, 2000);
+        }, 6000);
     });
 }
-
 function moveLift(floor, callback) {
+    const floorDifference = Math.abs(currentFloor.index - floor.index);
+
+    liftContainer.style.transition = `top ${floorDifference}s linear`;
     liftContainer.style.top = floor.position;
+
     setTimeout(() => {
-        dailBtn[floor.index].classList.remove("selectedBtn")
+        currentFloor = floor;
+        setTimeout(()=>{
+            leftDoor.style.left = "-50%"
+            rightDoor.style.left = "100%"
+            setTimeout(() => {
+                leftDoor.style.left = "0%"
+                rightDoor.style.left = "50%"
+                dailBtn[floor.index].classList.remove("selectedBtn");
+            }, 2500)
+        },1000)
         callback();
-    }, 1000);
+    }, floorDifference * 1000);
 }

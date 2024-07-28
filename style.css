@@ -1,10 +1,11 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
     user-select: none;
 }
+
 .mainContainer {
     height: 100vh;
     display: flex;
@@ -27,6 +28,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
 }
 
 .floors {
@@ -40,17 +42,57 @@
     width: 60%;
     height: 25%;
     top: 75%;
-    border: 5px solid blue;
-    transition: 1s all linear;
+    border: 2px solid rgb(73, 73, 74);
+    background-image: url("./img/peoples.jpg");
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+.lift{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.chainLift{
+    position: absolute;
+    top: 0;
 }
 
-
-.lift {}
-
-.dailContainer{
+.leftDoor {
+    width: 50%;
+    height: 100%;
+    border: 1px solid black;
+    background: linear-gradient(45deg,
+            #999 5%,
+            #fff 10%,
+            #ccc 30%,
+            #ddd 50%,
+            #ccc 70%,
+            #fff 80%,
+            #999 95%);
+    position: absolute;
+    left: 0%;
+    transition:  1.5s linear;
 }
 
-.dailBtn{
+.rightDoor {
+    width: 50%;
+    height: 100%;
+    border: 1px solid black;
+    background: linear-gradient(45deg,
+            #999 5%,
+            #fff 10%,
+            #ccc 30%,
+            #ddd 50%,
+            #ccc 70%,
+            #fff 80%,
+            #999 95%);
+    position: absolute;
+    left: 50%;
+    transition: 1.5s linear;
+}
+
+.dailBtn {
     width: 80px;
     height: 80px;
     display: flex;
@@ -64,12 +106,13 @@
     transition: 0.2s all;
     margin: 10px;
 }
-.dailBtn:hover{
+
+.dailBtn:hover {
     color: rgba(246, 36, 36, 0.604);
     border-color: rgba(246, 36, 36, 0.58);
 }
 
-.selectedBtn{
+.selectedBtn {
     color: red !important;
     border-color: red !important;
     cursor: not-allowed;
