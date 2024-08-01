@@ -31,6 +31,7 @@ let currentFloor = floors[floors.length - 1];
 const callingFloors = [];
 let isLiftMoving = false;
 let direction = false;
+let doesContain = false;
 
 floorContainer.forEach((locationPlate) => {
     locationPlate.innerHTML = `
@@ -64,15 +65,15 @@ function setInLine() {
         }, 6000);
     });
 }
-function moveLift(floor, callback) {
+const moveLift = (floor, callback) => {
     const floorDifference = Math.abs(currentFloor.index - floor.index);
     direction = currentFloor.index > floor.index ? "up" : "down";
     floorContainer.forEach((locationPlate) => {
         locationPlate.innerHTML = `
             <div class="locationPlate">
-                <i class="fa-solid fa-caret-down upIcon ${direction==="down"?"active":''}"></i>
+                <i class="fa-solid fa-caret-down upIcon ${direction === "down" ? "active" : ''}"></i>
                 <p class="floorNo">${currentFloor.floor}</p>
-                <i class="fa-solid fa-caret-up downIcon ${direction==="up"?"active":''}"></i>
+                <i class="fa-solid fa-caret-up downIcon ${direction === "up" ? "active" : ''}"></i>
             </div>`;
     });
 
@@ -91,21 +92,39 @@ function moveLift(floor, callback) {
             clearInterval(intervalId);
             return
         }
-        document.querySelectorAll(".floorNo").forEach((no)=>{
+        if (callingFloors.includes(currentFloor)) {
+            let temp = callingFloors.splice(callingFloors.indexOf(currentFloor), 1)[0];
+            callingFloors.unshift(floor);
+            callingFloors.unshift(temp);
+            doesContain = true;
+            liftContainer.style.transition = `top ${floorDifference}s linear`;
+            liftContainer.style.top = floor.position;
+            clearInterval(intervalId);
+            clearInterval(intervalId2);
+            moveLift(callingFloors.shift(), () => {
+                setTimeout(() => {
+                    isLiftMoving = false;
+                    setInLine();
+                }, 6000);
+            });
+            return;
+        }
+        document.querySelectorAll(".floorNo").forEach((no) => {
             no.innerHTML = currentFloor.floor
         })
-        
+
     }, 1000);
     liftContainer.style.transition = `top ${floorDifference}s linear`;
     liftContainer.style.top = floor.position;
 
-    setTimeout(() => {
+      const intervalId2 = setTimeout(() => {
         setTimeout(() => {
             leftDoor.style.left = "-50%"
             rightDoor.style.left = "100%"
             setTimeout(() => {
                 leftDoor.style.left = "0%"
                 rightDoor.style.left = "50%"
+                console.log(floor.floor);
                 dailBtn[floor.index].classList.remove("selectedBtn");
             }, 2500)
         }, 1000)

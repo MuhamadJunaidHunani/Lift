@@ -23,7 +23,7 @@
 
 .floorLiftContainer {
     height: 90vh;
-    width: 320px;
+    width: 400px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -45,7 +45,7 @@
     height: 25%;
     top: 75%;
     border: 2px solid rgb(73, 73, 74);
-    background-image: url("./img/peoples.jpg");
+    background-image: url("./img/family.jpg");
     background-size: cover;
     background-position: center;
     margin-left: 15%;
@@ -70,15 +70,18 @@
 .leftDoor {
     width: 50%;
     height: 100%;
-    border: 1px solid black;
-    background: linear-gradient(45deg,
+    border: 4px solid black;
+    border-right:3px solid black  ;
+    /* background: linear-gradient(45deg,
             #999 5%,
             #fff 10%,
             #ccc 30%,
             #ddd 50%,
             #ccc 70%,
             #fff 80%,
-            #999 95%);
+            #999 95%); */
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(6px);
     position: absolute;
     left: 0%;
     transition: 1.5s linear;
@@ -87,15 +90,19 @@
 .rightDoor {
     width: 50%;
     height: 100%;
-    border: 1px solid black;
-    background: linear-gradient(45deg,
+    border: 4px solid black;
+    border-left:3px solid black  ;
+    /* background: linear-gradient(45deg,
             #999 5%,
             #fff 10%,
             #ccc 30%,
             #ddd 50%,
             #ccc 70%,
             #fff 80%,
-            #999 95%);
+            #999 95%); */
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(6px);
     position: absolute;
     left: 50%;
     transition: 1.5s linear;
@@ -127,7 +134,7 @@
     cursor: not-allowed;
 }
 
-.locationPlate{
+.locationPlate {
     width: 100px;
     height: 30px;
     background-color: black;
@@ -137,17 +144,21 @@
     justify-content: space-evenly;
     border-radius: 7px;
 }
-.floorNo{
+
+.floorNo {
     font-size: 20px;
     font-weight: 600;
     font-family: 'Orbitron', sans-serif;
     text-align: center;
     color: red;
 }
-.downIcon , .upIcon{
+
+.downIcon,
+.upIcon {
     font-size: 20px;
     color: rgb(99, 99, 99);
 }
-.active{
+
+.active {
     color: red;
 }
