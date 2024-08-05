@@ -12,6 +12,7 @@
     justify-content: center;
     align-items: center;
     background-color: antiquewhite;
+    padding: 10px;
 }
 
 .subContainer {
@@ -47,7 +48,7 @@
     border: 2px solid rgb(73, 73, 74);
     background-image: url("./img/family.jpg");
     background-size: cover;
-    background-position: center;
+    background-position: center;    
     margin-left: 15%;
 }
 
@@ -72,14 +73,6 @@
     height: 100%;
     border: 4px solid black;
     border-right:3px solid black  ;
-    /* background: linear-gradient(45deg,
-            #999 5%,
-            #fff 10%,
-            #ccc 30%,
-            #ddd 50%,
-            #ccc 70%,
-            #fff 80%,
-            #999 95%); */
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(6px);
     position: absolute;
@@ -92,15 +85,6 @@
     height: 100%;
     border: 4px solid black;
     border-left:3px solid black  ;
-    /* background: linear-gradient(45deg,
-            #999 5%,
-            #fff 10%,
-            #ccc 30%,
-            #ddd 50%,
-            #ccc 70%,
-            #fff 80%,
-            #999 95%); */
-    /* From https://css.glass */
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(6px);
     position: absolute;
@@ -161,4 +145,14 @@
 
 .active {
     color: red;
+}
+
+@media (max-width: 450px) {
+    .liftContainer{
+        margin-left: 3%;
+    }
+    .locationPlate{
+        width: 80px;
+        margin: 5px;
+    }
 }

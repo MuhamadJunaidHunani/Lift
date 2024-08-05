@@ -26,9 +26,14 @@ const leftDoor = document.querySelector(".leftDoor");
 const rightDoor = document.querySelector(".rightDoor");
 const dailBtn = document.querySelectorAll(".dailBtn");
 const floorContainer = document.querySelectorAll(".floors");
+const alarm = document.querySelector(".alarm");
+const movingAudio = document.querySelector(".movingAudio");
+const openingAudio = document.querySelector(".openingAudio");
+const reachingAudio = document.querySelector(".reachingAudio");
+
 
 let currentFloor = floors[floors.length - 1];
-const callingFloors = [];
+let callingFloors = [];
 let isLiftMoving = false;
 let direction = false;
 let doesContain = false;
@@ -66,6 +71,7 @@ function setInLine() {
     });
 }
 const moveLift = (floor, callback) => {
+    movingAudio.play();
     const floorDifference = Math.abs(currentFloor.index - floor.index);
     direction = currentFloor.index > floor.index ? "up" : "down";
     floorContainer.forEach((locationPlate) => {
@@ -118,7 +124,10 @@ const moveLift = (floor, callback) => {
     liftContainer.style.top = floor.position;
 
       const intervalId2 = setTimeout(() => {
-        setTimeout(() => {
+          setTimeout(() => {
+            movingAudio.pause();
+            reachingAudio.play();
+            openingAudio.play();
             leftDoor.style.left = "-50%"
             rightDoor.style.left = "100%"
             setTimeout(() => {
